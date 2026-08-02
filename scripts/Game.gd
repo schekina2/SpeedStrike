@@ -76,13 +76,13 @@ func check_enemy_collision():
 
 func update_hud():
 	score_label.text = "Score: %d" % score
-	level_label.text = "Niveau %d" % current_level
+	level_label.text = "Level %d" % current_level
 	if snake.is_dashing:
 		dash_label.text = "DASH ACTIF !"
 	elif snake.dash_cooldown_timer > 0:
 		dash_label.text = "Dash: %.1fs" % snake.dash_cooldown_timer
 	else:
-		dash_label.text = "Dash: PRÊT"
+		dash_label.text = "Dash: READY"
 
 func game_over():
 	Constants.last_score = score

@@ -46,8 +46,8 @@ text = "Score: 0"
 
 [node name="RestartButton" type="Button" parent="VBoxContainer" unique_id=1468595329]
 layout_mode = 2
-text = "Rejouer"
+text = "Replay"
 
 [node name="MenuButton" type="Button" parent="VBoxContainer" unique_id=1180240639]
 layout_mode = 2
-text = "Menu Principal"
+text = "Main Menu"

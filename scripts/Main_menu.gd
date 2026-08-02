@@ -17,7 +17,7 @@ func _on_mute_pressed():
 	update_mute_button()
 
 func update_mute_button():
-	mute_button.text = "🔇 Son coupé" if SoundManager.is_muted else "🔊 Son activé"
+	mute_button.text = "🔇 Sound off" if SoundManager.is_muted else "🔊 Sound on"
 	
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

@@ -41,16 +41,16 @@ text = "SPEED STRIKE"
 
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=2134046297]
 layout_mode = 2
-text = "Jouer"
+text = "Play"
 
 [node name="HowToPlayButton" type="Button" parent="VBoxContainer" unique_id=603552165]
 layout_mode = 2
-text = "Comment Jouer"
+text = "How To Play"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=377080538]
 layout_mode = 2
-text = "Quitter"
+text = "Quit"
 
 [node name="MuteButton" type="Button" parent="VBoxContainer" unique_id=2032321162]
 layout_mode = 2
-text = "🔊 Son activé"
+text = "🔊 Sound on"

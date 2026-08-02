@@ -37,22 +37,22 @@ grow_vertical = 2
 [node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=657667424]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "COMMENT JOUER"
+text = "HOW TO PLAY"
 
 [node name="InstructionsLabel" type="Label" parent="VBoxContainer" unique_id=542127059]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Déplace-toi : Flèches directionnelles
+text = "Move: Arrow keys
 
-Mange les pommes jaunes pour grandir
+Eat the yellow apples to grow
 
-Appuie sur ESPACE pour activer ton DASH
-Pendant le dash, ta tête devient une arme :
-fonce sur les ennemis pour les détruire !
+Press SPACE to activate your DASH
+While dashing, your head becomes a weapon:
+charge at enemies to destroy them!
 
-Hors dash, évite les ennemis roses,
-sinon c'est Game Over."
+When not dashing, avoid the purple enemies,
+or it's Game Over."
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1163819082]
 layout_mode = 2
-text = "Retour"
+text = "Back"
