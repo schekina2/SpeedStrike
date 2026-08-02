@@ -7,6 +7,7 @@ extends Node2D
 @onready var dash_label = $HUD/DashLabel
 @onready var level_label = $HUD/LevelLabel
 @onready var sfx_player = $SFXPlayer
+@onready var mute_button = $HUD/MuteButton
 
 var score: int = 0
 var current_level: int = 1
@@ -16,6 +17,15 @@ func _ready():
 	food.respawn(snake.body)
 	update_hud()
 	snake.dash_started.connect(_on_dash_started)
+	mute_button.pressed.connect(_on_mute_pressed)
+	update_mute_button()
+
+func _on_mute_pressed():
+	SoundManager.toggle_mute()
+	update_mute_button()
+
+func update_mute_button():
+	mute_button.text = "🔇" if SoundManager.is_muted else "🔊"
 
 func _on_dash_started():
 	SoundManager.play_dash_sound(sfx_player)
