@@ -6,6 +6,7 @@ extends Node2D
 @onready var score_label = $HUD/ScoreLabel
 @onready var dash_label = $HUD/DashLabel
 @onready var level_label = $HUD/LevelLabel
+@onready var sfx_player = $SFXPlayer
 
 var score: int = 0
 var current_level: int = 1
@@ -14,6 +15,10 @@ func _ready():
 	apply_level_config()
 	food.respawn(snake.body)
 	update_hud()
+	snake.dash_started.connect(_on_dash_started)
+
+func _on_dash_started():
+	SoundManager.play_dash_sound(sfx_player)
 
 func _process(_delta):
 	check_food_collision()
@@ -40,6 +45,7 @@ func check_food_collision():
 		snake.grow()
 		score += 1
 		food.respawn(snake.body)
+		SoundManager.play_eat_sound(sfx_player)
 
 func check_self_collision():
 	var head = snake.get_head_position()
@@ -53,6 +59,7 @@ func check_enemy_collision():
 	if snake.is_dashing:
 		if enemies.remove_enemy_at(head):
 			score += 3
+			SoundManager.play_kill_sound(sfx_player)
 	else:
 		if enemies.enemies.has(head):
 			game_over()
@@ -69,4 +76,5 @@ func update_hud():
 
 func game_over():
 	Constants.last_score = score
+	SoundManager.play_game_over_sound(sfx_player)
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
