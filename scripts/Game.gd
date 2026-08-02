@@ -5,20 +5,35 @@ extends Node2D
 @onready var enemies = $Enemies
 @onready var score_label = $HUD/ScoreLabel
 @onready var dash_label = $HUD/DashLabel
+@onready var level_label = $HUD/LevelLabel
 
 var score: int = 0
-const ENEMY_COUNT = 3
+var current_level: int = 1
 
 func _ready():
+	apply_level_config()
 	food.respawn(snake.body)
-	enemies.spawn_enemies(ENEMY_COUNT, snake.body)
 	update_hud()
 
 func _process(_delta):
 	check_food_collision()
 	check_self_collision()
 	check_enemy_collision()
+	check_level_up()
 	update_hud()
+
+func apply_level_config():
+	var config = Constants.LEVEL_CONFIG[current_level]
+	enemies.set_speed(config["enemy_speed"])
+	enemies.spawn_enemies(config["enemy_count"], snake.body)
+
+func check_level_up():
+	if current_level == 1 and score >= Constants.LEVEL_2_SCORE:
+		current_level = 2
+		apply_level_config()
+	elif current_level == 2 and score >= Constants.LEVEL_3_SCORE:
+		current_level = 3
+		apply_level_config()
 
 func check_food_collision():
 	if snake.get_head_position() == food.grid_position:
@@ -44,6 +59,7 @@ func check_enemy_collision():
 
 func update_hud():
 	score_label.text = "Score: %d" % score
+	level_label.text = "Niveau %d" % current_level
 	if snake.is_dashing:
 		dash_label.text = "DASH ACTIF !"
 	elif snake.dash_cooldown_timer > 0:

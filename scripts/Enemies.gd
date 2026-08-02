@@ -46,3 +46,6 @@ func _draw():
 	for pos in enemies:
 		var draw_pos = pos * Constants.GRID_SIZE
 		draw_rect(Rect2(draw_pos.x, draw_pos.y, Constants.GRID_SIZE - 2, Constants.GRID_SIZE - 2), Color(0.8, 0.1, 0.6))
+
+func set_speed(new_speed: float):
+	enemy_speed = new_speed
