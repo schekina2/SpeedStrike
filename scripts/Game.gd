@@ -52,4 +52,5 @@ func update_hud():
 		dash_label.text = "Dash: PRÊT"
 
 func game_over():
-	get_tree().paused = true
+	Constants.last_score = score
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
