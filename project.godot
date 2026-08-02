@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SpeedStrike"
-run/main_scene="uid://d2ocsdll6ycjw"
+run/main_scene="uid://jlsiqehhm0fb"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
