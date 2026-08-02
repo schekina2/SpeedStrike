@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://csp2rdmjfxxsh"]
+
+[ext_resource type="Script" uid="uid://b3pp05cb103st" path="res://scripts/how_to_play.gd" id="1_d4i75"]
+
+[node name="HowToPlay" type="Control" unique_id=2049751011]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d4i75")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1781256666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 919.0
+offset_bottom = 495.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1885613286]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = 215.0
+offset_right = 521.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=657667424]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "COMMENT JOUER"
+
+[node name="InstructionsLabel" type="Label" parent="VBoxContainer" unique_id=542127059]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Déplace-toi : Flèches directionnelles
+
+Mange les pommes jaunes pour grandir
+
+Appuie sur ESPACE pour activer ton DASH
+Pendant le dash, ta tête devient une arme :
+fonce sur les ennemis pour les détruire !
+
+Hors dash, évite les ennemis roses,
+sinon c'est Game Over."
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1163819082]
+layout_mode = 2
+text = "Retour"
