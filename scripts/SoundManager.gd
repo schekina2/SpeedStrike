@@ -13,7 +13,7 @@ func generate_tone(frequency: float, duration: float, wave_type: String = "sine"
 
 	for i in range(num_samples):
 		var t = float(i) / sample_rate
-		var envelope = 1.0 - (float(i) / num_samples)  # fade out
+		var envelope = 1.0 - (float(i) / num_samples)
 		var value: float
 
 		match wave_type:
@@ -24,7 +24,7 @@ func generate_tone(frequency: float, duration: float, wave_type: String = "sine"
 			"noise":
 				value = randf_range(-1.0, 1.0)
 
-		value *= envelope * 0.3  # volume
+		value *= envelope * 0.3
 		var sample = int(value * 32767)
 		sample = clamp(sample, -32768, 32767)
 		data.encode_s16(i * 2, sample)
@@ -57,13 +57,12 @@ var is_muted: bool = false
 
 func generate_music_loop() -> AudioStreamWAV:
 	var sample_rate = 44100
-	var duration = 4.0  # boucle de 4 secondes
+	var duration = 4.0
 	var num_samples = int(sample_rate * duration)
 	var data = PackedByteArray()
 	data.resize(num_samples * 2)
 
-	# Petite mélodie répétitive simple (4 notes qui bouclent)
-	var notes = [220.0, 261.6, 329.6, 261.6]  # La, Do, Mi, Do
+	var notes = [220.0, 261.6, 329.6, 261.6]
 	var note_duration = duration / notes.size()
 
 	for i in range(num_samples):
@@ -73,7 +72,7 @@ func generate_music_loop() -> AudioStreamWAV:
 		var local_t = fmod(t, note_duration)
 
 		var value = sin(TAU * freq * local_t) * 0.15
-		value += sin(TAU * freq * 2 * local_t) * 0.05  # harmonique légère
+		value += sin(TAU * freq * 2 * local_t) * 0.05
 
 		var sample = int(value * 32767)
 		sample = clamp(sample, -32768, 32767)
