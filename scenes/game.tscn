@@ -8,6 +8,13 @@
 [node name="Game" type="Node2D" unique_id=1829848061]
 script = ExtResource("1_lnu2h")
 
+[node name="Background" type="ColorRect" parent="." unique_id=859796013]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 962.0
+offset_bottom = 529.0
+color = Color(0.95686275, 0.94509804, 0.87058824, 1)
+
 [node name="Snake" type="Node2D" parent="." unique_id=1184978452]
 script = ExtResource("1_uwrxv")
 
@@ -24,6 +31,7 @@ offset_left = 20.0
 offset_top = 10.0
 offset_right = 60.0
 offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 
 [node name="DashLabel" type="Label" parent="HUD" unique_id=490563584]
@@ -31,6 +39,7 @@ offset_left = 750.0
 offset_top = 10.0
 offset_right = 790.0
 offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 
 [node name="LevelLabel" type="Label" parent="HUD" unique_id=1577342680]
@@ -38,6 +47,7 @@ offset_left = 430.0
 offset_top = 10.0
 offset_right = 470.0
 offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 
 [node name="MuteButton" type="Button" parent="HUD" unique_id=2011937122]

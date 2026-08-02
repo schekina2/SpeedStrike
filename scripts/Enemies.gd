@@ -34,13 +34,22 @@ func move_enemies():
 		enemies[i] = new_pos
 	queue_redraw()
 
+const ShatterEffect = preload("res://scenes/shatter_effect.tscn")
+
 func remove_enemy_at(pos: Vector2i) -> bool:
 	var index = enemies.find(pos)
 	if index != -1:
+		spawn_shatter_effect(pos)
 		enemies.remove_at(index)
 		queue_redraw()
 		return true
 	return false
+
+func spawn_shatter_effect(grid_pos: Vector2i):
+	var effect = ShatterEffect.instantiate()
+	var pixel_pos = grid_pos * Constants.GRID_SIZE + Vector2i(Constants.GRID_SIZE / 2, Constants.GRID_SIZE / 2)
+	effect.position = pixel_pos
+	get_parent().add_child(effect)  # ajouté à Game, pas à Enemies, pour rester visible même après redraw
 
 func _draw():
 	for pos in enemies:
