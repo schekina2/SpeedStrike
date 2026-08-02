@@ -87,5 +87,32 @@ func _draw():
 		var pos = body[i] * Constants.GRID_SIZE
 		var color = Color(1, 0.4, 0.1) if is_dashing else Color(0.2, 0.8, 0.3)
 		if i == 0:
-			color = Color(1, 0.6, 0.1) if is_dashing else Color(0.1, 0.9, 0.4)  # tête plus claire
+			color = Color(1, 0.6, 0.1) if is_dashing else Color(0.1, 0.9, 0.4)
 		draw_rect(Rect2(pos.x, pos.y, Constants.GRID_SIZE - 2, Constants.GRID_SIZE - 2), color)
+
+	# Yeux sur la tête
+	draw_eyes()
+
+func draw_eyes():
+	var head_pos = body[0] * Constants.GRID_SIZE
+	var eye_radius = 3.0
+	var offset = Constants.GRID_SIZE / 4.0
+
+	var eye1_pos: Vector2
+	var eye2_pos: Vector2
+
+	if direction == Vector2i(1, 0):  # droite
+		eye1_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + offset)
+		eye2_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + Constants.GRID_SIZE - offset)
+	elif direction == Vector2i(-1, 0):  # gauche
+		eye1_pos = Vector2(head_pos.x + offset, head_pos.y + offset)
+		eye2_pos = Vector2(head_pos.x + offset, head_pos.y + Constants.GRID_SIZE - offset)
+	elif direction == Vector2i(0, -1):  # haut
+		eye1_pos = Vector2(head_pos.x + offset, head_pos.y + offset)
+		eye2_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + offset)
+	else:  # bas
+		eye1_pos = Vector2(head_pos.x + offset, head_pos.y + Constants.GRID_SIZE - offset)
+		eye2_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + Constants.GRID_SIZE - offset)
+
+	draw_circle(eye1_pos, eye_radius, Color.BLACK)
+	draw_circle(eye2_pos, eye_radius, Color.BLACK)
