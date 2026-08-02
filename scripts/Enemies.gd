@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemies: Array = []  # liste de Vector2i (positions en grille)
+var enemies: Array = []
 var move_timer: float = 0.0
 var enemy_speed: float = 0.3
 
@@ -49,7 +49,7 @@ func spawn_shatter_effect(grid_pos: Vector2i):
 	var effect = ShatterEffect.instantiate()
 	var pixel_pos = grid_pos * Constants.GRID_SIZE + Vector2i(Constants.GRID_SIZE / 2, Constants.GRID_SIZE / 2)
 	effect.position = pixel_pos
-	get_parent().add_child(effect)  # ajouté à Game, pas à Enemies, pour rester visible même après redraw
+	get_parent().add_child(effect)
 
 func _draw():
 	for pos in enemies:

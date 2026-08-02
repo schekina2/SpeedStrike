@@ -68,12 +68,11 @@ func move_snake():
 	direction = next_direction
 	var new_head = body[0] + direction
 
-	# Wrap autour de la grille (comme le Snake classique) - on ajustera plus tard si besoin
 	new_head.x = wrapi(new_head.x, 0, Constants.GRID_WIDTH)
 	new_head.y = wrapi(new_head.y, 0, Constants.GRID_HEIGHT)
 
 	body.insert(0, new_head)
-	body.pop_back()  # on enlève la queue (sauf si on vient de manger, géré ailleurs)
+	body.pop_back()
 	queue_redraw()
 
 func grow():
@@ -101,16 +100,16 @@ func draw_eyes():
 	var eye1_pos: Vector2
 	var eye2_pos: Vector2
 
-	if direction == Vector2i(1, 0):  # droite
+	if direction == Vector2i(1, 0):
 		eye1_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + offset)
 		eye2_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + Constants.GRID_SIZE - offset)
-	elif direction == Vector2i(-1, 0):  # gauche
+	elif direction == Vector2i(-1, 0):
 		eye1_pos = Vector2(head_pos.x + offset, head_pos.y + offset)
 		eye2_pos = Vector2(head_pos.x + offset, head_pos.y + Constants.GRID_SIZE - offset)
-	elif direction == Vector2i(0, -1):  # haut
+	elif direction == Vector2i(0, -1):
 		eye1_pos = Vector2(head_pos.x + offset, head_pos.y + offset)
 		eye2_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + offset)
-	else:  # bas
+	else:
 		eye1_pos = Vector2(head_pos.x + offset, head_pos.y + Constants.GRID_SIZE - offset)
 		eye2_pos = Vector2(head_pos.x + Constants.GRID_SIZE - offset, head_pos.y + Constants.GRID_SIZE - offset)
 

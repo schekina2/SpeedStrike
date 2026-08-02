@@ -22,6 +22,5 @@ func create_fragments(color: Color = Color(0.8, 0.1, 0.6)):
 		tween.tween_property(fragment, "modulate:a", 0.0, 0.4)
 		tween.tween_property(fragment, "rotation", randf_range(-PI, PI), 0.4)
 
-	# Détruit l'effet après l'animation
 	await get_tree().create_timer(0.45).timeout
 	queue_free()
